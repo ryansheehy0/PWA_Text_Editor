@@ -1,12 +1,12 @@
 const butInstall = document.getElementById('buttonInstall');
 
-let appInstalled = localStorage.getItem("appInstalled") || false
 let installEvent
 // Logic for installing the PWA
 // TODO: Add an event handler to the `beforeinstallprompt` event
 window.addEventListener('beforeinstallprompt', (event) => {
   event.preventDefault()
   installEvent = event
+  butInstall.style.visibility = "visible"
 });
 
 // TODO: Implement a click event handler on the `butInstall` element
@@ -21,10 +21,3 @@ window.addEventListener('appinstalled', (event) => {
   butInstall.style.visibility = "hidden"
   localStorage.setItem("appInstalled", "true")
 });
-
-console.log(appInstalled)
-if(appInstalled){
-  butInstall.style.visibility = "hidden"
-}else{
-  butInstall.style.visibility = "visible"
-}
