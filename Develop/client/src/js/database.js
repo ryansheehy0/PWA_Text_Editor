@@ -22,7 +22,7 @@ export const putDb = async (content) => {
     // Get object store
     const jate = transaction.objectStore("jate")
     // Put content in jate
-    await jate.add(content)
+    await jate.put({id: 1, content})
   }catch(error){
     console.error(`Error with getDB: ${error}`)
   }finally{
@@ -42,7 +42,7 @@ export const getDb = async () => {
     // get data
     const data = await jate.getAll()
     // return the data
-    return data
+    return data[0].content
   }catch(error){
     console.error(`Error with getDB: ${error}`)
   }finally{
